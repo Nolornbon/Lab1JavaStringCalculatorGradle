@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.example.StringCalculatorTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2023-04-19T16:38:19" hostname="DESKTOP-VMPA2M7" time="0.025">
+<testsuite name="org.example.StringCalculatorTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2023-04-19T16:48:39" hostname="DESKTOP-VMPA2M7" time="0.024">
   <properties/>
   <testcase name="Step1()" classname="org.example.StringCalculatorTest" time="0.014"/>
   <testcase name="Step2()" classname="org.example.StringCalculatorTest" time="0.002"/>
-  <testcase name="Step3()" classname="org.example.StringCalculatorTest" time="0.0"/>
-  <testcase name="Step4()" classname="org.example.StringCalculatorTest" time="0.0"/>
+  <testcase name="Step3()" classname="org.example.StringCalculatorTest" time="0.001"/>
+  <testcase name="Step4()" classname="org.example.StringCalculatorTest" time="0.001"/>
   <testcase name="Step5()" classname="org.example.StringCalculatorTest" time="0.001"/>
   <testcase name="Step6()" classname="org.example.StringCalculatorTest" time="0.001"/>
   <testcase name="Step7()" classname="org.example.StringCalculatorTest" time="0.001"/>
   <testcase name="Step8()" classname="org.example.StringCalculatorTest" time="0.001"/>
+  <testcase name="Step9()" classname="org.example.StringCalculatorTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

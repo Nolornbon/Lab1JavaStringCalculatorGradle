@@ -102,5 +102,11 @@ public class StringCalculatorTest {
         assertEquals(26, Calculator.add("//[*][%][#]\n2#8%7*9"));
     }
 
+    @Test
+    public void Step9() { // підтримка декількох роздільників довільної довжини //
+        assertEquals(25, Calculator.add("//[*][%][**]\n1*2,8**7%7"));
+        assertEquals(6, Calculator.add("//[fan][move]\n1fan2move3"));
+    }
+
 }
 

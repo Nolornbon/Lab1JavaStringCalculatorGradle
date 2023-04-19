@@ -6,7 +6,9 @@ import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
 public class StringCalculator {
-    public  int add(String numbers) {
+    private final List<String> delimiters = new ArrayList<>();
+
+    public int add(String numbers) {
         if (numbers == null || numbers.isEmpty()) {
             return 0;
         }
@@ -14,36 +16,11 @@ public class StringCalculator {
             throw new IllegalArgumentException("Incorrect Input Format");
         }
 
-        List<String> delimiters = new ArrayList<>();
+        String input = numbers;
         delimiters.add(",");
         delimiters.add("\n");
-
-        String input = numbers;
         if (numbers.startsWith("//")) {
-            int endIndex = numbers.indexOf('\n');
-            if (endIndex == -1) {
-                throw new IllegalArgumentException("Incorrect Input Format");
-            }
-            if (!numbers.startsWith("//[") && endIndex != 3) {
-                throw new IllegalArgumentException("Incorrect Input Format");
-            }
-            String customDelimiter = numbers.substring(2, endIndex);
-            List<String> customDelimiters = new ArrayList<>();
-            if (customDelimiter.startsWith("[")) {
-                Pattern pattern = Pattern.compile("\\[(.*?)\\]");
-                Matcher matcher = pattern.matcher(customDelimiter);
-                while (matcher.find()) {
-                    String delimiter = matcher.group(1);
-                    customDelimiters.add(delimiter);
-                }
-            } else {
-                delimiters.add(numbers.substring(2, endIndex));
-            }
-
-            for (String delimiter : customDelimiters) {
-                delimiters.add(Pattern.quote(delimiter));
-            }
-            input = numbers.substring(endIndex + 1);
+            input = getCustomDelimiters(input);
         }
 
         String delimiterList = String.join("|", delimiters);
@@ -57,12 +34,7 @@ public class StringCalculator {
                 throw new IllegalArgumentException("Incorrect Input Format");
             }
             if (!num.isEmpty()) {
-                int n;
-                try {
-                    n = Integer.parseInt(num);
-                } catch (NumberFormatException e) {
-                    throw new IllegalArgumentException("Incorrect Delimiter Input");
-                }
+                int n = parseNumber(num);
                 if (n < 0) {
                     negList.add(n);
                 } else if (n <= 1000) {
@@ -84,5 +56,41 @@ public class StringCalculator {
             sum += num;
         }
         return sum;
+    }
+
+    private String getCustomDelimiters(String input) {
+        int endIndex = input.indexOf('\n');
+        if (endIndex == -1) {
+            throw new IllegalArgumentException("Incorrect Input Format");
+        }
+        if (!input.startsWith("//[") && endIndex != 3) {
+            throw new IllegalArgumentException("Incorrect Input Format");
+        }
+        String customDelimiter = input.substring(2, endIndex);
+        List<String> customDelimiters = new ArrayList<>();
+        if (customDelimiter.startsWith("[")) {
+            Pattern pattern = Pattern.compile("\\[(.*?)\\]");
+            Matcher matcher = pattern.matcher(customDelimiter);
+            while (matcher.find()) {
+                String delimiter = matcher.group(1);
+                customDelimiters.add(delimiter);
+            }
+        } else {
+            delimiters.add(input.substring(2, endIndex));
+        }
+        for (String delimiter : customDelimiters) {
+            delimiters.add(Pattern.quote(delimiter));
+        }
+        return input.substring(endIndex + 1);
+    }
+
+    private int parseNumber(String num) {
+        int n;
+        try {
+            n = Integer.parseInt(num);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("Incorrect Delimiter Input");
+        }
+        return n;
     }
 }
