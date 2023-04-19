@@ -84,5 +84,12 @@ public class StringCalculatorTest {
         }
     }
 
+    @Test
+    public void Step6() { // опрацювання чисел більше 1000//
+        assertEquals(10, Calculator.add("1,2,5000\n7"));
+        assertEquals(1004, Calculator.add("1001,2,999\n3"));
+        assertEquals(1999, Calculator.add("//#\n1000#999#1001"));
+    }
+
 }
 

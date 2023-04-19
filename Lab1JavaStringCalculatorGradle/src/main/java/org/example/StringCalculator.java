@@ -47,9 +47,9 @@ public class StringCalculator {
                 } catch (NumberFormatException e) {
                     throw new IllegalArgumentException("Incorrect Delimiter Input"); //помилка невизначеного роздільника//
                 }
-                if (n < 0){
+                if (n < 0) {
                     negList.add(n);
-                } else {
+                } else if (n <=1000) {
                     numList.add(n);
                 }
             }
