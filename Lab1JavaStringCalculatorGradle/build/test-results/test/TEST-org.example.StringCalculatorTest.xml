@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.example.StringCalculatorTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2023-04-19T15:08:44" hostname="DESKTOP-VMPA2M7" time="0.02">
+<testsuite name="org.example.StringCalculatorTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2023-04-19T15:28:00" hostname="DESKTOP-VMPA2M7" time="0.02">
   <properties/>
-  <testcase name="Step1()" classname="org.example.StringCalculatorTest" time="0.014"/>
+  <testcase name="Step1()" classname="org.example.StringCalculatorTest" time="0.015"/>
   <testcase name="Step2()" classname="org.example.StringCalculatorTest" time="0.002"/>
   <testcase name="Step3()" classname="org.example.StringCalculatorTest" time="0.001"/>
   <testcase name="Step4()" classname="org.example.StringCalculatorTest" time="0.001"/>
+  <testcase name="Step5()" classname="org.example.StringCalculatorTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

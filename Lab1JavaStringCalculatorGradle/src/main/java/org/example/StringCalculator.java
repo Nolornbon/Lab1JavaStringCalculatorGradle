@@ -35,6 +35,7 @@ public class StringCalculator {
         String[] inputSplit = input.split(delimiterList);
 
         List<Integer> numList = new ArrayList<>();
+        List<Integer> negList = new ArrayList<>();
 
         for (String num : inputSplit) {
             if (num.isEmpty()) {
@@ -46,8 +47,20 @@ public class StringCalculator {
                 } catch (NumberFormatException e) {
                     throw new IllegalArgumentException("Incorrect Delimiter Input"); //помилка невизначеного роздільника//
                 }
-                numList.add(n);
+                if (n < 0){
+                    negList.add(n);
+                } else {
+                    numList.add(n);
+                }
             }
+        }
+
+        if (!negList.isEmpty()) {
+            StringBuilder sb = new StringBuilder("Negatives are not allowed:");
+            for (int neg : negList) {
+                sb.append(" ").append(neg);
+            }
+            throw new IllegalArgumentException(sb.toString());
         }
 
         int sum = 0;

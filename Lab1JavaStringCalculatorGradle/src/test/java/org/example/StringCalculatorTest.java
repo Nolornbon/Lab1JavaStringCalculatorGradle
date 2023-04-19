@@ -55,5 +55,34 @@ public class StringCalculatorTest {
         }
     }
 
+    @Test
+    public void Step5() { // опрацювання  від'ємних чисел//
+        try {
+            Calculator.add("1,-1");
+        } catch (IllegalArgumentException e) {
+            assertEquals("Negatives are not allowed: -1", e.getMessage());
+        }
+        try {
+            Calculator.add("-1");
+        } catch (IllegalArgumentException e) {
+            assertEquals("Negatives are not allowed: -1", e.getMessage());
+        }
+        try {
+            Calculator.add("-1,-2");
+        } catch (IllegalArgumentException e) {
+            assertEquals("Negatives are not allowed: -1 -2", e.getMessage());
+        }
+        try {
+            Calculator.add("-1,2\n-3");
+        } catch (IllegalArgumentException e) {
+            assertEquals("Negatives are not allowed: -1 -3", e.getMessage());
+        }
+        try {
+            Calculator.add("//;\n-3;2;8\n7,-7");
+        } catch (IllegalArgumentException e) {
+            assertEquals("Negatives are not allowed: -3 -7", e.getMessage());
+        }
+    }
+
 }
 
