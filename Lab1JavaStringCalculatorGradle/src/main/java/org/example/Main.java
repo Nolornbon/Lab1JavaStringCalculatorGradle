@@ -16,5 +16,6 @@ public class Main {
         //System.out.println("sum " + Calculator.add("//;\n-1;2;8,7,-7")); //exceptions5
         System.out.println("sum " + Calculator.add("1,2,5000\n7")); //10s6
         System.out.println("sum " + Calculator.add("//[*]\n1*2**3***6"));//12s7
+        System.out.println("sum " + Calculator.add("//[*][%]\n1*2%3"));//6s8
     }
 }
