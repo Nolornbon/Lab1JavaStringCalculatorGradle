@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.example.StringCalculatorTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-04-19T14:23:00" hostname="DESKTOP-VMPA2M7" time="0.015">
+<testsuite name="org.example.StringCalculatorTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2023-04-19T15:03:58" hostname="DESKTOP-VMPA2M7" time="0.017">
   <properties/>
-  <testcase name="Step1()" classname="org.example.StringCalculatorTest" time="0.015"/>
+  <testcase name="Step1()" classname="org.example.StringCalculatorTest" time="0.014"/>
+  <testcase name="Step2()" classname="org.example.StringCalculatorTest" time="0.002"/>
+  <testcase name="Step3()" classname="org.example.StringCalculatorTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

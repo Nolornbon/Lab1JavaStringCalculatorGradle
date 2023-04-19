@@ -31,5 +31,16 @@ public class StringCalculatorTest {
             assertEquals("Incorrect Delimiter Input", e.getMessage());
         }
     }
+
+    @Test
+    public void Step3() { // підтримка нового роздільника "\n" //
+        assertEquals(12, Calculator.add("2,4\n6"));
+        try {
+            Calculator.add("2,4,6,\n");
+        } catch (IllegalArgumentException e) {
+            assertEquals("Incorrect Input Format", e.getMessage());
+        }
+    }
+
 }
 

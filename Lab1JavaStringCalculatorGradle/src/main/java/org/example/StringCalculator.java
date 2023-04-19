@@ -10,7 +10,12 @@ public class StringCalculator {
             return 0;
         }
 
-        String[] inputSplit = numbers.split(",");
+        if (!Character.isDigit(numbers.charAt(numbers.length() - 1))) {
+            throw new IllegalArgumentException("Incorrect Input Format"); //помилка роздільник є останнім символом//
+        }
+
+        String delimiter = ",|\n";
+        String[] inputSplit = numbers.split(delimiter);
         List<Integer> numList = new ArrayList<>();
 
         for (String num : inputSplit) {
