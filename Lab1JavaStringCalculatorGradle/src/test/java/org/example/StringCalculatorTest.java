@@ -19,5 +19,17 @@ public class StringCalculatorTest {
         assertEquals(0, Calculator.add("0"));
         assertEquals(5, Calculator.add("5"));
         assertEquals(4, Calculator.add("1,3"));
+
+    }
+
+    @Test
+    public void Step2 () { //підтримка довільної кількості доданків//
+        assertEquals(9, Calculator.add("1,3,5"));
+        try {
+            Calculator.add("1,3%5");
+        } catch (IllegalArgumentException e) {
+            assertEquals("Incorrect Delimiter Input", e.getMessage());
+        }
     }
 }
+
