@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StringCalculator {
-
     public int add(String numbers) {
         if (numbers == null || numbers.isEmpty()) {
             return 0;
@@ -14,8 +13,27 @@ public class StringCalculator {
             throw new IllegalArgumentException("Incorrect Input Format"); //помилка роздільник є останнім символом//
         }
 
-        String delimiter = ",|\n";
-        String[] inputSplit = numbers.split(delimiter);
+        List<String> delimiters = new ArrayList<>();
+
+        delimiters.add (",");
+        delimiters.add ("\n");
+
+        String input = numbers;
+        if (numbers.startsWith("//")) {
+            int endIndex = numbers.indexOf('\n');
+            if (endIndex == -1) {
+                throw new IllegalArgumentException("Incorrect Input Format"); //помилка відсутності символу нового рядка//
+            }
+            if (endIndex != 3) {
+                throw new IllegalArgumentException("Incorrect Input Format");//помилка задання кастомного роздільника//
+            }
+            delimiters.add(numbers.substring(2, endIndex));
+            input = numbers.substring(endIndex+ 1);
+        }
+        String delimiterList = String.join("|", delimiters);
+
+        String[] inputSplit = input.split(delimiterList);
+
         List<Integer> numList = new ArrayList<>();
 
         for (String num : inputSplit) {

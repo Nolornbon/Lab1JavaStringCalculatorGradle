@@ -42,5 +42,18 @@ public class StringCalculatorTest {
         }
     }
 
+    @Test
+    public void Step4() { // підтримка роздільника, що задається користувачем //
+        assertEquals(8, Calculator.add("//;\n3;5"));
+        assertEquals(10, Calculator.add("//;\n1,9"));
+        assertEquals(100, Calculator.add("//@\n10@60,20\n10"));
+        assertEquals(1000, Calculator.add("//;\n100;900"));
+        try {
+            Calculator.add("//;\n3;;5");
+        } catch (IllegalArgumentException e) {
+            assertEquals("Incorrect Input Format", e.getMessage());
+        }
+    }
+
 }
 
