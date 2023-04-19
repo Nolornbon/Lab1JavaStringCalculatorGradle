@@ -91,5 +91,10 @@ public class StringCalculatorTest {
         assertEquals(1999, Calculator.add("//#\n1000#999#1001"));
     }
 
+    @Test
+    public void Step7() { // підтримка роздільника довільної довжини /
+        assertEquals(10, Calculator.add("//[*]\n1*2**3***4"));
+    }
+
 }
 

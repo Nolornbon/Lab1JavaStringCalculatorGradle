@@ -2,6 +2,7 @@ package org.example;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class StringCalculator {
     public int add(String numbers) {
@@ -15,21 +16,27 @@ public class StringCalculator {
 
         List<String> delimiters = new ArrayList<>();
 
-        delimiters.add (",");
-        delimiters.add ("\n");
+        delimiters.add(",");
+        delimiters.add("\n");
 
         String input = numbers;
+
         if (numbers.startsWith("//")) {
             int endIndex = numbers.indexOf('\n');
             if (endIndex == -1) {
                 throw new IllegalArgumentException("Incorrect Input Format"); //помилка відсутності символу нового рядка//
             }
-            if (endIndex != 3) {
+            if (!numbers.startsWith("//[") && endIndex != 3) {
                 throw new IllegalArgumentException("Incorrect Input Format");//помилка задання кастомного роздільника//
             }
-            delimiters.add(numbers.substring(2, endIndex));
+            String customDelimiter = numbers.substring(2, endIndex);
+            if (customDelimiter.startsWith("[")) {
+                customDelimiter = customDelimiter.substring(1, customDelimiter.length() - 1);
+            }
+            delimiters.add(Pattern.quote(customDelimiter));
             input = numbers.substring(endIndex+ 1);
         }
+
         String delimiterList = String.join("|", delimiters);
 
         String[] inputSplit = input.split(delimiterList);
@@ -38,9 +45,9 @@ public class StringCalculator {
         List<Integer> negList = new ArrayList<>();
 
         for (String num : inputSplit) {
-            if (num.isEmpty()) {
-                throw new IllegalArgumentException("Incorrect Input Format");//помилка використання роздільників//
-            } else {
+            if (num.isEmpty() && !numbers.startsWith("//[")) {
+                throw new IllegalArgumentException("Incorrect Input Format"); //помилка використання роздільників//
+            } if (!num.isEmpty()) {
                 int n;
                 try {
                     n = Integer.parseInt(num);
@@ -49,7 +56,7 @@ public class StringCalculator {
                 }
                 if (n < 0) {
                     negList.add(n);
-                } else if (n <=1000) {
+                } else if (n <= 1000) {
                     numList.add(n);
                 }
             }
