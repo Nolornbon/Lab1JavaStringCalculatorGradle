@@ -99,7 +99,7 @@ public class StringCalculatorTest {
     @Test
     public void Step8() { // підтримка декількох роздільників //
         assertEquals(6, Calculator.add("//[*][%]\n1*2%3"));
-        assertEquals(26, Calculator.add("//[*][%][#]\n2#8%7*9"));
+        assertEquals(26, Calculator.add("//[%][#]\n2#8%7*9"));
     }
 
     @Test
